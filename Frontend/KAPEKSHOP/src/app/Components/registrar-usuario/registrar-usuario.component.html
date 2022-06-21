@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <!--<a class="navbar-brand" href="#">Menú</a>-->
       <button type="button" class="btn btn-defailt btn-lg" routerLink="/registrar-usuario">
-        <i class="fa-solid fa-user"></i>
+        <i class="fa fa-fw fa-user"></i>
         <span > Cuenta</span>
       </button>
       
@@ -135,9 +135,9 @@
               
               
               <div class="mb-3">
-                <label class="inicioS">¿Ya tienes cuenta? <a href=""> Inicia Sesión</a></label>
+                <label class="inicioS">¿Ya tienes cuenta? <a href="" routerLink="/inicio"> Inicia Sesión</a></label>
                 <button type="submit" [disabled]="FormularioRegistro.invalid" class="btn btn-success btn-lg float-end">Registrarme</button>
-                <button class="btn btn-secondary btn-lg float-start" routerLink="/inicio">Atrás</button>
+                <button class="btn btn-secondary btn-lg float-start" routerLink="/landing">Atrás</button>
               </div>
               
             </form>
