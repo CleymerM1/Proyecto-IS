@@ -1,0 +1,8 @@
+insert into privilegios (visualizar, agregar, editar, eliminar) Values
+	(1,0,0,0),
+    (1,1,1,1);
+    
+select * from privilegios;
+insert into rol (idPrivilegio, nombreRol, estado) values (1,'comprador', 'activo'),(2,'vendedor', 'activo');
+select * from rol;
+select * from usuario;
