@@ -18,7 +18,7 @@ export class RegistrarUsuarioComponent implements OnInit {
               private router:Router) { 
     this.FormularioRegistro=this.fb.group({
       NombreCompleto: ['',Validators.required],
-      Correo: ['',Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      Correo: ['',Validators.required, Validators.email],
       Contraseña: ['',Validators.required, [Validators.minLength(8), Validators.maxLength(32)],Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')],
       Direccion: ['',Validators.required],
       Departamento: ['',Validators.required],

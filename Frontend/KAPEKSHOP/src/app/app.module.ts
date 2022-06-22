@@ -15,7 +15,7 @@ import { LandingComponent } from './Components/landing/landing.component';
 import { HeaderComponent } from './Components/landing/header/header.component';
 import { BodyComponent } from './Components/landing/body/body.component';
 import { FooterComponent } from './Components/landing/footer/footer.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
-    NoopAnimationsModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
