@@ -12,9 +12,14 @@ import { ListarProductosComponent } from './Components/listar-productos/listar-p
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './Components/landing/landing.component';
+import { MatInputModule } from '@angular/material/input'
+import { MatRadioModule} from '@angular/material/radio'
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeaderComponent } from './Components/landing/header/header.component';
 import { BodyComponent } from './Components/landing/body/body.component';
 import { FooterComponent } from './Components/landing/footer/footer.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,11 +35,16 @@ import { FooterComponent } from './Components/landing/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatButtonModule,
     ReactiveFormsModule,
     NgbModule,
     MatCardModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,3 +10,13 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.modal-exito {
+    background-color: rgb(21, 177, 21);
+    color:white;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    font-weight: bold;
+}
