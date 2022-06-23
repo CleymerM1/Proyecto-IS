@@ -11,7 +11,6 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
             id="templatemo_main_nav">
             <div class="flex-fill">
@@ -22,11 +21,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tienda</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" routerLink="/categorias" href="#" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categorias
-                        </a>
+                    <li>
+                        <button mat-button [matMenuTriggerFor]="Categorias">Categorias</button>
+                        <mat-menu #Categorias="matMenu" yPosition="below">
+                            <button mat-menu-item>Electrónica</button>
+                            <button mat-menu-item> Futuros Papás</button>
+                            <button mat-menu-item>Libros, películas y música</button>
+                            <button mat-menu-item>Electrodomésticos</button>
+                            <button mat-menu-item>Muebles</button>
+                            <button mat-menu-item>Salud y belleza</button>
+                            <button mat-menu-item>Decoración del hogar</button>
+                            <button mat-menu-item>Joyas y relojes</button>
+                            <button mat-menu-item>Ropa y calzado de hombre</button>
+                            <button mat-menu-item>Ropa y calzado de Mujer</button>
+                            <button mat-menu-item>Ropa y calzado de niño</button>
+                            <button mat-menu-item>Productos para mascotas</button>
+                            <button mat-menu-item>Juguetes y juegos</button>
+                            <button mat-menu-item>Bolsos</button>
+                        </mat-menu>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Mis productos</a></li>
                             <li><a class="dropdown-item" href="#">Estadisticas</a></li>
