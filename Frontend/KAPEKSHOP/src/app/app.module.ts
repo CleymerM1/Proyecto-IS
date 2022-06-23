@@ -19,7 +19,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeaderComponent } from './Components/landing/header/header.component';
 import { BodyComponent } from './Components/landing/body/body.component';
 import { FooterComponent } from './Components/landing/footer/footer.component';
+<<<<<<< HEAD
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+=======
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+>>>>>>> 797863e5d1eecda281bf81bb4d250b30ff4b51f0
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
+<<<<<<< HEAD
     NoopAnimationsModule
+=======
+    BrowserAnimationsModule
+>>>>>>> 797863e5d1eecda281bf81bb4d250b30ff4b51f0
   ],
   providers: [],
   bootstrap: [AppComponent]
