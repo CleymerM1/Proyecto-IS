@@ -21,6 +21,9 @@ import { BodyComponent } from './Components/landing/body/body.component';
 import { FooterComponent } from './Components/landing/footer/footer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule} from '@angular/material/menu';
+//imports para conectar angular con node.js/mysql
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     MatIconModule,
     NoopAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+//imports para conectar angular con node.js/mysql
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

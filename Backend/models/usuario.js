@@ -49,7 +49,7 @@ Usuario.obtener = async function() {
 };*/
 
 Usuario.obtener = (resultado)=>{
-    conexion.query("select * from usuario", (err, rows)=>{
+    conexion.query("select * from usuario;", (err, rows)=>{
         if(err) throw err;
         resultado(null, rows);
 

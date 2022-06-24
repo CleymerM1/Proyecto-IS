@@ -5,6 +5,8 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
+//import que importa los servicios del backend
+import { UsuarioService } from 'src/app/Services/usuario.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,7 +23,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   checked = false;
   hide = true;
 
-  constructor( private modalService: NgbModal, private router: Router) { 
+  constructor( private modalService: NgbModal, private router: Router, private UsuarioService:UsuarioService) { 
   }
   abrirModal( modal:any ){
 
@@ -57,7 +59,15 @@ export class RegistrarUsuarioComponent implements OnInit {
   
     }
     matcher = new MyErrorStateMatcher();
+    //Funcion para listar los usuarios
+    listarUsuarios(){
+      this.UsuarioService.getUsuario().subscribe(
+        res=>{console.log(res)},
+        err=>console.log(err)
+      );
+    }
   ngOnInit(): void {
+    this.listarUsuarios();
   }
 
  
