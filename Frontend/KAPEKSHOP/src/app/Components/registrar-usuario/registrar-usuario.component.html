@@ -21,24 +21,13 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Tienda</a>
           </li>
-          <li>
-            <button mat-button [matMenuTriggerFor]="Categorias">Categorias</button>
-            <mat-menu #Categorias="matMenu" yPosition="below">
-              <button mat-menu-item routerLink="/categorias">Electrónica</button>
-              <button mat-menu-item routerLink="/categorias"> Futuros Papás</button>
-              <button mat-menu-item routerLink="/categorias">Libros, películas y música</button>
-              <button mat-menu-item routerLink="/categorias">Electrodomésticos</button>
-              <button mat-menu-item routerLink="/categorias">Muebles</button>
-              <button mat-menu-item routerLink="/categorias">Salud y belleza</button>
-              <button mat-menu-item routerLink="/categorias">Decoración del hogar</button>
-              <button mat-menu-item routerLink="/categorias">Joyas y relojes</button>
-              <button mat-menu-item routerLink="/categorias">Ropa y calzado de hombre</button>
-              <button mat-menu-item routerLink="/categorias">Ropa y calzado de Mujer</button>
-              <button mat-menu-item routerLink="/categorias">Ropa y calzado de niño</button>
-              <button mat-menu-item routerLink="/categorias">Productos para mascotas</button>
-              <button mat-menu-item routerLink="/categorias">Juguetes y juegos</button>
-              <button mat-menu-item routerLink="/categorias">Bolsos</button>
-            </mat-menu>
+          <li class="nav-item">
+            <button mat-button  [matMenuTriggerFor]="Categorias">Categorias</button>
+              <mat-menu #Categorias="matMenu" yPosition="below">
+                <button mat-menu-item>Electrónica</button>
+                <button mat-menu-item> Futuros Papás</button>
+              </mat-menu>
+          </li>
         </ul>
       </div>
       <div class="navbar align-self-center d-flex">
@@ -89,133 +78,129 @@
 
 <!--inicio del formulario-->
 
-<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3">
-      <div class="card">
-        <div class="card-header text-center">
-          <h3>Formulario de registro</h3>
-        </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Formulario de registro</h3>
+                </div>
 
-        <div class="card-body border border-info">
-          <form class="row" [formGroup]="formularioRegistro" class="contenedor">
+                  <div class="card-body border border-info">
+                    <form class="row" [formGroup]="formularioRegistro"  class="contenedor">
 
-            <div class="col-12 mb-3">
-              <mat-form-field class="input-full" class="input-full" style="width: 100%" appearance="fill">
-                <mat-label>Nombre Completo</mat-label>
-                <input matInput formControlName="nombreCompletoFormControl" placeholder="Ex. Juan Perez" value="">
-                <mat-error *ngIf="formularioRegistro.get('nombreCompletoFormControl')?.invalid">El nombre es requerido
-                </mat-error>
-              </mat-form-field>
+                      <div class="col-12 mb-3">
+                        <mat-form-field class="input-full" class="input-full" style="width: 100%" appearance="fill" >
+                          <mat-label>Nombre Completo</mat-label>
+                          <input matInput formControlName="nombreCompletoFormControl" placeholder="Ex. Juan" value="">
+                          <mat-error *ngIf="formularioRegistro.get('nombreCompletoFormControl')?.invalid">El nombre es requerido</mat-error>
+                        </mat-form-field>
+                        </div>
+                      <div class="col-12 mb-3">
+                        <mat-form-field class="input-full" class="input-full" style="width: 100%" appearance="fill" >
+                          <mat-label>Apellido Completo</mat-label>
+                          <input matInput formControlName="apellidoCompletoFormControl" placeholder="Ex.Perez" value="">
+                          <mat-error *ngIf="formularioRegistro.get('apellidoCompletoFormControl')?.invalid">El apellido es requerido</mat-error>
+                        </mat-form-field>
+                        </div>
+              
+                        <div class="col-12 mb-3">
+                          <mat-form-field class="input-full" style="width: 100%" appearance="fill">
+                          <mat-label>Email</mat-label>
+                          <input matInput placeholder="usuario@gmail.com" formControlName="emailFormControl" required>
+                          <mat-error *ngIf="formularioRegistro.get('emailFormControl')?.invalid">El correo no es válido</mat-error>
+                          </mat-form-field>
+                        </div>
+
+                        <div class="mb-3">
+                          <mat-form-field class="input-full" style="width: 100%" appearance="fill">
+                            <mat-label>Ingresa tu contraseña</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" formControlName="contraseniaFormControl" required> 
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            
+                            </button>
+                            <mat-error *ngIf="formularioRegistro.get('contraseniaFormControl')?.invalid">La contraseña es requerida</mat-error>
+                          </mat-form-field>
+                          </div>
+
+                          <div class="mb-3">
+                            <mat-form-field class="input-full" style="width: 100%" appearance="fill">
+                              <mat-label>Telefono</mat-label>
+                              <span matPrefix>+504 &nbsp;</span>
+                              <input type="telefono" matInput placeholder="5555-5555" formControlName="telefonoFormControl" required>
+                              <mat-icon matSuffix></mat-icon>
+                              <mat-error *ngIf="formularioRegistro.get('telefonoFormControl')?.invalid">El teléfono es requerido</mat-error>
+                            </mat-form-field>
+                            </div>
+                            <div class="mb-3">
+                              <mat-form-field class="input-full" style="width: 100%" appearance="fill">
+                                <mat-label>Dirección</mat-label>
+                                <textarea matInput placeholder="Ex. Danlí" formControlName="direccionFormControl" required></textarea>
+                                <mat-error *ngIf="formularioRegistro.get('direccionFormControl')?.invalid">La dirección es requerida</mat-error>
+                              </mat-form-field>
+                              
+                            </div>
+
+                            <div class="mb-3">
+                              <mat-form-field class="input-full" appearance="fill">
+                                  <mat-label>Selecciona un departamento</mat-label>
+                                  <select formControlName="departamentoFormControl" matNativeControl required>
+                                      <option value="">--Seleccione una opción--</option>
+                                    <option value="Atlántida">Atlántida</option>
+                                    <option value="Choluteca">Choluteca</option>
+                                    <option value="Colón">Colón</option>
+                                    <option value="Copán">Copán</option>
+                                    <option value="Cortes">Cortés</option>
+                                    <option value="Comayagua">Comayagua</option>
+                                    <option value="El Paraíso">El Paraíso</option>
+                                    <option value="Francisco Morazan">Francisco Morazán</option>
+                                    <option value="Gracias a Dios">Gracias a Dios</option>
+                                    <option value="Intibuca">Intibucá</option>
+                                    <option value="Islas de la Bahia">Islas de la Bahía</option>
+                                    <option value="La Paz">La Paz</option>
+                                    <option value="Lempira">Lempira</option>
+                                    <option value="Ocotepeque">Ocotepeque</option>
+                                    <option value="Olancho">Olancho</option>
+                                    <option value="Santa Barbara">Santa Bárbara </option>
+                                    <option value="Valle">Valle</option>
+                                    <option value="Yoro">Yoro</option>
+                                  </select>
+                                  <mat-error *ngIf="formularioRegistro.get('departamentoFormControl')?.invalid">Seleccione un departamento</mat-error>
+                                </mat-form-field>
+                          </div>
+
+                          <div class="mb-3">
+                            <section class="example-section">
+                            <mat-checkbox formControlName="terminosFormControl" class="example-margin" >Aceptar <a href="">terminos y condiciones</a> </mat-checkbox>
+                          
+                          </section>
+                          </div><hr>
+              
+              
+                          <div class="mb-3">
+                            <label class="inicioS">¿Ya tienes cuenta? <a href="" routerLink="/inicio"> Inicia Sesión</a></label>
+                            <button [disabled]="formularioRegistro?.invalid" class="btn btn-primary btn-success btn-lg float-end"  type="button" (click)="enviarFormulario(modaDialogoExito)">Registrarme</button>
+                            <button class="btn btn-secondary btn-lg float-start" routerLink="/landing">Atrás</button>
+                          </div>
+                    </form>
+                 </div>
+              </div>
             </div>
-
-            <div class="col-12 mb-3">
-              <mat-form-field class="input-full" style="width: 100%" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="usuario@gmail.com" formControlName="emailFormControl" required>
-                <mat-error *ngIf="formularioRegistro.get('emailFormControl')?.invalid">El correo no es válido
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="mb-3">
-              <mat-form-field class="input-full" style="width: 100%" appearance="fill">
-                <mat-label>Ingresa tu contraseña</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña"
-                  formControlName="contraseniaFormControl" required>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-
-                </button>
-                <mat-error *ngIf="formularioRegistro.get('contraseniaFormControl')?.invalid">La contraseña es requerida
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="mb-3">
-              <mat-form-field class="input-full" style="width: 100%" appearance="fill">
-                <mat-label>Telefono</mat-label>
-                <span matPrefix>+504 &nbsp;</span>
-                <input type="telefono" matInput placeholder="5555-5555" formControlName="telefonoFormControl" required>
-                <mat-icon matSuffix></mat-icon>
-                <mat-error *ngIf="formularioRegistro.get('telefonoFormControl')?.invalid">El teléfono es requerido
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="mb-3">
-              <mat-form-field class="input-full" style="width: 100%" appearance="fill">
-                <mat-label>Dirección</mat-label>
-                <textarea matInput placeholder="Ex. Danlí" formControlName="direccionFormControl" required></textarea>
-                <mat-error *ngIf="formularioRegistro.get('direccionFormControl')?.invalid">La dirección es requerida
-                </mat-error>
-              </mat-form-field>
-
-            </div>
-
-            <div class="mb-3">
-              <mat-form-field class="input-full" appearance="fill">
-                <mat-label>Selecciona un departamento</mat-label>
-                <select formControlName="departamentoFormControl" matNativeControl required>
-                  <option value="">--Seleccione una opción--</option>
-                  <option value="Atlántida">Atlántida</option>
-                  <option value="Choluteca">Choluteca</option>
-                  <option value="Colón">Colón</option>
-                  <option value="Copán">Copán</option>
-                  <option value="Cortes">Cortés</option>
-                  <option value="Comayagua">Comayagua</option>
-                  <option value="El Paraíso">El Paraíso</option>
-                  <option value="Francisco Morazan">Francisco Morazán</option>
-                  <option value="Gracias a Dios">Gracias a Dios</option>
-                  <option value="Intibuca">Intibucá</option>
-                  <option value="Islas de la Bahia">Islas de la Bahía</option>
-                  <option value="La Paz">La Paz</option>
-                  <option value="Lempira">Lempira</option>
-                  <option value="Ocotepeque">Ocotepeque</option>
-                  <option value="Olancho">Olancho</option>
-                  <option value="Santa Barbara">Santa Bárbara </option>
-                  <option value="Valle">Valle</option>
-                  <option value="Yoro">Yoro</option>
-                </select>
-                <mat-error *ngIf="formularioRegistro.get('departamentoFormControl')?.invalid">Seleccione un departamento
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="mb-3">
-              <section class="example-section">
-                <mat-checkbox formControlName="terminosFormControl" class="example-margin">Aceptar <a href="">terminos y
-                    condiciones</a> </mat-checkbox>
-
-              </section>
-            </div>
-            <hr>
-
-
-            <div class="mb-3">
-              <label class="inicioS">¿Ya tienes cuenta? <a href="" routerLink="/inicio"> Inicia Sesión</a></label>
-              <button [disabled]="formularioRegistro?.invalid" class="btn btn-primary btn-success btn-lg float-end"
-                type="button" (click)="enviarFormulario(modaDialogoExito)">Registrarme</button>
-              <button class="btn btn-secondary btn-lg float-start" routerLink="/landing">Atrás</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Modal dialogo exito-->
+          </div>
+        </div>  
+      
+  <!--Modal dialogo exito-->
 <ng-template #modaDialogoExito let-modal>
   <div class="modal-exito text-center">
-    <div class="col-12">
-      <div class="close float-end mx-2 my-2 cursor-pointer" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span class="material-icons">close</span>
+      <div class="col-12">
+          <div class="close float-end mx-2 my-2 cursor-pointer" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span class="material-icons">close</span> 
+          </div>
+
       </div>
-
-    </div>
-    <div class="row">
-
+      <div class="row">
+          
       <div class="col-12">
         <span class="material-icons" style="color: white; font-size: 121px;">
           check_circle_outline
@@ -226,13 +211,14 @@
   </div>
 
   <div class="text-center mt-3">
-    <h3>¡Excelente!</h3>
-    <h3>Se ha registrado exitosamente</h3>
+      <h3>¡Excelente!</h3>
+      <h3>Se ha registrado exitosamente</h3>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary text-center btn-1"
-      style="margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem;"
-      (click)="enviarAInicio(modal)">OK</button>
+      <button class="btn btn-primary text-center btn-1" style="margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem;" (click)="enviarAInicio(modal)">OK</button>
   </div>
 </ng-template>
 <!--Final modal diálogo éxito-->
+
+
+
