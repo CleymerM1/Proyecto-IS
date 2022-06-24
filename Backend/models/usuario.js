@@ -11,64 +11,38 @@ const Usuario = function(objUsuario){
 };
 
 Usuario.crear = (newObjUsuario, res)=>{
-    
+    let buscarCorreo = `select correo from usuario where correo='${newObjUsuario.correo}'`
     let insertQuery = `insert into usuario (idRol, nombre, apellido, correo, direccion, departamento, contrasenia, estado, telefono) VALUES (2, '${newObjUsuario.nombre}', '${newObjUsuario.apellido}', '${newObjUsuario.correo}','${newObjUsuario.direccion}','${newObjUsuario.departamento}','${newObjUsuario.contraseña}','activado','${newObjUsuario.telefono}')`;
-    conexion.query(insertQuery, (err, rows, fields)=>{
+
+    conexion.query(buscarCorreo, (err, resUsuario)=>{
         if(err){
-            console.log('Usuario no agregado');
+            return res(err, null)
         }
-        else{
-            console.log('Usuario agregado');
-            //res.json({status: 'Usuario agregado'})
+
+        if(resUsuario.length) {
+            return res(null, {error: 'El correo ya esta en uso', tipo: 'no_permitido'})
+        }else {
+            conexion.query(insertQuery, (err, resRegistrarUsuario) => {
+                
+                if (err) return res({msj: 'El usuario no pudo ser registrado'}, null)
+
+                return res(null,{msj: 'El usuario fue registrado correctamente'})
+            })
         }
     });
 };
 
-/*
-Usuario.obtener = async function() {
-    /*
-    conexion.query("select * from usuario", (err,res)=>{
-        if(err){
-            content(null, err);
-            return;
-        }else{
-            content(null,res);
-        }
-    });
-    
-   //var content=[];
-   
-   conexion.query("select * from usuario;", (err,rows)=>{
-    if(err) throw err;
-        let content = rows;
-        console.log((content));
-        
-        return content;
-   });
-   
-};*/
 
 Usuario.obtener = (resultado)=>{
-    conexion.query("select * from usuario;", (err, rows)=>{
+    conexion.query("select * from usuario", (err, rows)=>{
         if(err) throw err;
         resultado(null, rows);
 
     });
 };
 
-Usuario.verificarCorreo = (req, resultado)=>{
-    conexion.query("select correo from usuario", (err,rows)=>{
-        if(err) throw err;
-        //resultado(null,rows);
-        for(let i=0;i<rows.length;i++){
-            if(req == rows[i]){
-                resultado('Correo existente',false);
-            }
-        }
-        resultado(null,true);
-    });
-    
-}
+
+
 
 
 module.exports = Usuario;
