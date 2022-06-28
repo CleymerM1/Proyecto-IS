@@ -21,6 +21,11 @@ departamento VARCHAR(50), contrasenia VARCHAR(50), estado VARCHAR(50), telefono 
 primary key (idUsuario, idRol),
 FOREIGN KEY (idRol) REFERENCES rol(idRol));
 
-
-
+-------------------------------------Nuevo 27/06/2022--------------------------------------------------------
+CREATE TABLE puntaje(idPuntaje INT auto_increment, idUsuario INT, idProducto INT, puntaje FLOAT, comentario varchar(500) default null
+PRIMARY KEY (idPuntaje),
+FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN Key (idProducto) REFERENCES producto(idProducto));
+----------------------------------para directorio de las fotos------------------------------------
+ALTER TABLE producto MODIFY foto varchar(250);
 
