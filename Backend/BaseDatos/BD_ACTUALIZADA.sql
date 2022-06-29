@@ -7,10 +7,13 @@ CREATE TABLE privilegios (idPrivilegio INT PRIMARY KEY AUTO_INCREMENT, visualiza
 
 CREATE TABLE categoria (idCategoria INT PRIMARY KEY AUTO_INCREMENT, nombreCategoria VARCHAR(50), descripcion VARCHAR(50));
 
-CREATE TABLE producto(idProducto INT auto_increment,idCategoria INT, nombre VARCHAR(50), tipo VARCHAR(50), costo INT, foto varchar(50),
+CREATE TABLE producto(idProducto INT auto_increment,idCategoria INT, nombre VARCHAR(50), costo INT,
 estado VARCHAR(50), descripcion VARCHAR(50), descuento INT,
 primary key (idProducto, idCategoria),
 FOREIGN KEY (idCategoria) REFERENCES categoria(idCategoria));
+
+CREATE TABLE foto(idFoto int auto_increment, idProducto int, descripcion varchar(150), foreign key (idProducto) references producto(idProducto));
+
 
 CREATE TABLE rol(idRol INT AUTO_INCREMENT, idPrivilegio INT,nombreRol VARCHAR(50), estado VARCHAR(50),
 primary key (idRol),
@@ -27,5 +30,6 @@ PRIMARY KEY (idPuntaje),
 FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
 FOREIGN Key (idProducto) REFERENCES producto(idProducto));
 ----------------------------------para directorio de las fotos------------------------------------
-ALTER TABLE producto MODIFY foto varchar(250);
+--ALTER TABLE producto MODIFY foto varchar(250);
+
 
