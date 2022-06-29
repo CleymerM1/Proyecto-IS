@@ -5,10 +5,9 @@ const Producto = require('../models/producto');
 exports.crearProducto = (req,res)=>{
     console.log(req.body);
     const producto = new Producto({
+        categoria: req.body.categoria,
         nombre: req.body.nombre,
-        tipo: req.body.tipo,
         costo: req.body.costo,
-        foto: req.body.foto,
         estado: req.body.estado,
         descripcion: req.body.descripcion,
         descuento: req.body.descuento
