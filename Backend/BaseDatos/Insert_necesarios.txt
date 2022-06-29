@@ -6,3 +6,16 @@ select * from privilegios;
 insert into rol (idPrivilegio, nombreRol, estado) values (1,'comprador', 'activo'),(2,'vendedor', 'activo');
 select * from rol;
 select * from usuario;
+insert into categoria (nombreCategoria, descripcion) Values ('Eléctronica', 'Articulos electronicos'),
+    ('Futuros papás',''),
+    ('Libros, peliculas y musica',''),
+    ('Articulos para el hogar','Muebles, decoraciones para el interior de la casa'),
+    ('Accesorios','Relojes, bolsos, joyas'),
+    ('Salud y belleza',''),
+    ('Ropa y calzado para hombre',''),
+    ('Ropa y calzado para mujer',''),
+    ('Ropa y calzado para niños',''),
+    ('Juguetes y juegos','');
+    
+    
+select * from categoria;
