@@ -1,5 +1,6 @@
-
+/*-------------------------------Import para la conexion con la base de datos------------------------------*/ 
 const conexion = require('../config/conexion');
+/*------------------------------------------Creacion de clases---------------------------------------------*/ 
 const Usuario = function(objUsuario){
     this.nombre = objUsuario.nombre;
     this.apellido = objUsuario.apellido;
@@ -9,10 +10,12 @@ const Usuario = function(objUsuario){
     this.contraseña = objUsuario.contraseña;
     this.telefono = objUsuario.telefono;
 };
-
+/*---------------------------------------------Funciones---------------------------------------------------*/
 Usuario.crear = (newObjUsuario, res)=>{
     let buscarCorreo = `select correo from usuario where correo='${newObjUsuario.correo}'`
-    let insertQuery = `insert into usuario (idRol, nombre, apellido, correo, direccion, departamento, contrasenia, estado, telefono) VALUES (2, '${newObjUsuario.nombre}', '${newObjUsuario.apellido}', '${newObjUsuario.correo}','${newObjUsuario.direccion}','${newObjUsuario.departamento}','${newObjUsuario.contraseña}','activado','${newObjUsuario.telefono}')`;
+    let insertQuery = `insert into usuario (idRol, nombre, apellido, correo, direccion, departamento, contrasenia, estado, telefono) 
+                                            VALUES (2, '${newObjUsuario.nombre}', '${newObjUsuario.apellido}', '${newObjUsuario.correo}',
+                                            '${newObjUsuario.direccion}','${newObjUsuario.departamento}','${newObjUsuario.contraseña}','activado','${newObjUsuario.telefono}')`;
 
     conexion.query(buscarCorreo, (err, resUsuario)=>{
         if(err){
@@ -32,7 +35,6 @@ Usuario.crear = (newObjUsuario, res)=>{
     });
 };
 
-
 Usuario.obtener = (resultado)=>{
     conexion.query("select * from usuario", (err, rows)=>{
         if(err) throw err;
@@ -40,9 +42,6 @@ Usuario.obtener = (resultado)=>{
 
     });
 };
-
-
-
 
 
 module.exports = Usuario;
