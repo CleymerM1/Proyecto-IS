@@ -2,10 +2,9 @@
 const conexion = require('../config/conexion');
 /*------------------------------------------Creacion de clases---------------------------------------------*/ 
 const Producto = function(objProducto){
+    this.categoria = objProducto.categoria;
     this.nombre = objProducto.nombre;
-    this.tipo = objProducto.tipo;
     this.costo = objProducto.costo;
-    this.foto = objProducto.foto;
     this.estado = objProducto.estado;
     this.descripcion = objProducto.descripcion;
     this.descuento = objProducto.descuento;
@@ -13,15 +12,24 @@ const Producto = function(objProducto){
 /*---------------------------------------------Funciones---------------------------------------------------*/
 /*--------Crear Producto---------*/
 Producto.crear = (newObjProducto, res)=>{
-    let insertQuery =   `insert into producto (idCategoria, nombre, tipo, costo, foto, estado, descripcion, descuento) 
-                        VALUES (2, '${newObjProducto.nombre}', '${newObjProducto.tipo}', '${newObjProducto.costo}',
-                        '${newObjProducto.foto}','${newObjProducto.estado}','${newObjProducto.descripcion}','activado','${newObjProducto.descuento}')`;
-
-    conexion.query(insertQuery, (err, resRegistrarProducto) => {
-        if (err) return res({msj: 'El producto no pudo ser registrado'+err}, null)
+    let buscarIdcategoria = `select idCategoria from categoria where nombreCategoria = '${newObjProducto.categoria}'`
+    conexion.query(buscarIdcategoria, (error, resIdcategoria)=>{
+        if(error){
+            return res(error, null)
+        }
+        if(resIdcategoria.length) {
+            let idcat = Object.values(JSON.parse(JSON.stringify(resIdcategoria[0])))
+            //console.log(idcat)
+            let insertQuery =   `insert into producto (idCategoria, nombre, costo, estado, descripcion, descuento) 
+                        VALUES ('${idcat}', '${newObjProducto.nombre}', '${newObjProducto.costo}',
+                        '${newObjProducto.estado}','${newObjProducto.descripcion}','${newObjProducto.descuento}')`;
+            conexion.query(insertQuery,(err, resRegistrarProducto)=>{
+                if (err) return res({msj: 'El producto no pudo ser registrado'+err}, null)
         
-        return res(null,{msj: 'El producto fue registrado correctamente'})
-    })
+                return res(null,{msj: 'El producto fue registrado correctamente'})
+            })
+        }      
+    }) 
 };
 /*-------Obtener Productos------*/
 Producto.obtenerTodos = (resultado)=>{
