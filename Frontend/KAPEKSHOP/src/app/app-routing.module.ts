@@ -13,7 +13,12 @@ import { ArteComponent } from './Components/categorias/arte/arte.component';
 import { ElectrodomesticosComponent } from './Components/categorias/electrodomesticos/electrodomesticos.component';
 import { MueblesComponent } from './Components/categorias/muebles/muebles.component';
 import { BienestarComponent } from './Components/categorias/bienestar/bienestar.component';
-
+import { HogarComponent } from './Components/categorias/hogar/hogar.component';
+import { JoyasComponent } from './Components/categorias/joyas/joyas.component';
+import { HombreComponent } from './Components/categorias/hombre/hombre.component';
+import { MujerComponent } from './Components/categorias/mujer/mujer.component';
+import { MascotasComponent } from './Components/categorias/mascotas/mascotas.component';
+import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueteria.component';
 
 //componentes
 const routes: Routes = [
@@ -31,6 +36,12 @@ const routes: Routes = [
   {path:'electrodomesticos', component:ElectrodomesticosComponent},
   {path:'muebles', component:MueblesComponent},
   {path:'bienestar', component:BienestarComponent},
+  {path:'hogar', component:HogarComponent},
+  {path:'joyas', component:JoyasComponent},
+  {path:'hombre', component:HombreComponent},
+  {path:'mujer', component:MujerComponent},
+  {path:'mascotas', component:MascotasComponent},
+  {path:'jugueteria', component:JugueteriaComponent},
   
 
   {path:'**', redirectTo:'',pathMatch:'full'},

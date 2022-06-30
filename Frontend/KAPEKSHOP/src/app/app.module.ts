@@ -33,7 +33,12 @@ import { ArteComponent } from './Components/categorias/arte/arte.component';
 import { ElectrodomesticosComponent } from './Components/categorias/electrodomesticos/electrodomesticos.component';
 import { MueblesComponent } from './Components/categorias/muebles/muebles.component';
 import { BienestarComponent } from './Components/categorias/bienestar/bienestar.component';
-
+import { HogarComponent } from './Components/categorias/hogar/hogar.component';
+import { JoyasComponent } from './Components/categorias/joyas/joyas.component';
+import { HombreComponent } from './Components/categorias/hombre/hombre.component';
+import { MujerComponent } from './Components/categorias/mujer/mujer.component';
+import { MascotasComponent } from './Components/categorias/mascotas/mascotas.component';
+import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueteria.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,12 @@ import { BienestarComponent } from './Components/categorias/bienestar/bienestar.
     ElectrodomesticosComponent,
     MueblesComponent,
     BienestarComponent,
+    HogarComponent,
+    JoyasComponent,
+    HombreComponent,
+    MujerComponent,
+    MascotasComponent,
+    JugueteriaComponent,
     LandingComponent,
     HeaderComponent,
     BodyComponent,
