@@ -31,5 +31,7 @@ FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
 FOREIGN Key (idProducto) REFERENCES producto(idProducto));
 ----------------------------------para directorio de las fotos------------------------------------
 --ALTER TABLE producto MODIFY foto varchar(250);
+ALTER TABLE usuario MODIFY contrasenia blob;
+ALTER TABLE usuario ADD COLUMN token text;
 
 
