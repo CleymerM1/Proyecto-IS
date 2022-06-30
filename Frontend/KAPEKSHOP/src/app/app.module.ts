@@ -29,6 +29,10 @@ import { FormsModule } from '@angular/forms';
 //IMPORT PRODUCTOS
 import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
 import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.component';
+import { ArteComponent } from './Components/categorias/arte/arte.component';
+import { ElectrodomesticosComponent } from './Components/categorias/electrodomesticos/electrodomesticos.component';
+import { MueblesComponent } from './Components/categorias/muebles/muebles.component';
+import { BienestarComponent } from './Components/categorias/bienestar/bienestar.component';
 
 
 @NgModule({
@@ -40,6 +44,10 @@ import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.
     CategoriasComponent,
     ElectronicaComponent,
     RopaNinioComponent,
+    ArteComponent,
+    ElectrodomesticosComponent,
+    MueblesComponent,
+    BienestarComponent,
     LandingComponent,
     HeaderComponent,
     BodyComponent,

@@ -9,6 +9,11 @@ import { CategoriasComponent } from './Components/categorias/categorias.componen
 //IMPORTACIONES DE PRODUCTOS
 import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
 import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.component';
+import { ArteComponent } from './Components/categorias/arte/arte.component';
+import { ElectrodomesticosComponent } from './Components/categorias/electrodomesticos/electrodomesticos.component';
+import { MueblesComponent } from './Components/categorias/muebles/muebles.component';
+import { BienestarComponent } from './Components/categorias/bienestar/bienestar.component';
+
 
 //componentes
 const routes: Routes = [
@@ -22,6 +27,12 @@ const routes: Routes = [
 //PRODUCTOS 
   {path:'electronica', component:ElectronicaComponent},
   {path:'ropaninio', component:RopaNinioComponent},
+  {path:'arte', component:ArteComponent},
+  {path:'electrodomesticos', component:ElectrodomesticosComponent},
+  {path:'muebles', component:MueblesComponent},
+  {path:'bienestar', component:BienestarComponent},
+  
+
   {path:'**', redirectTo:'',pathMatch:'full'},
 ];
 
