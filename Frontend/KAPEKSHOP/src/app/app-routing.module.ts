@@ -6,6 +6,10 @@ import { ListarProductosComponent } from './Components/listar-productos/listar-p
 import { RegistrarUsuarioComponent } from './Components/registrar-usuario/registrar-usuario.component';
 import { CategoriasComponent } from './Components/categorias/categorias.component';
 
+//IMPORTACIONES DE PRODUCTOS
+import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
+import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.component';
+
 //componentes
 const routes: Routes = [
   {path: '', component:LandingComponent},
@@ -14,6 +18,10 @@ const routes: Routes = [
   {path:'editar-usuario/:id', component:RegistrarUsuarioComponent},
   {path:'listar-productos', component:ListarProductosComponent},
   {path:'categorias', component:CategoriasComponent},
+
+//PRODUCTOS 
+  {path:'electronica', component:ElectronicaComponent},
+  {path:'ropaninio', component:RopaNinioComponent},
   {path:'**', redirectTo:'',pathMatch:'full'},
 ];
 

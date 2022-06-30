@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { RegistrarUsuarioComponent } from './Components/registrar-usuario/registrar-usuario.component';
 import { InicioComponent } from './Components/inicio/inicio.component';
 import { ListarProductosComponent } from './Components/listar-productos/listar-productos.component';
+import { CategoriasComponent } from './Components/categorias/categorias.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './Components/landing/landing.component';
@@ -25,12 +26,20 @@ import { MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+//IMPORT PRODUCTOS
+import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
+import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegistrarUsuarioComponent,
     InicioComponent,
     ListarProductosComponent,
+    CategoriasComponent,
+    ElectronicaComponent,
+    RopaNinioComponent,
     LandingComponent,
     HeaderComponent,
     BodyComponent,
