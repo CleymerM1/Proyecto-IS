@@ -24,7 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json());
 //Usuario
-app.use('/usuario/registro', require('./routes/usuario'))
+app.use('/usuario', require('./routes/usuario'))
 //Producto
 app.use('/producto', require('./routes/producto'))
 
