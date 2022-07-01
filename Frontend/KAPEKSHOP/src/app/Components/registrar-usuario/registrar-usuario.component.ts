@@ -48,7 +48,7 @@ export class RegistrarUsuarioComponent implements OnInit {
       terminosFormControl: new FormControl(this.checked, [Validators.required,  Validators.requiredTrue]),
       
     })
-    enviarFormulario(modal:any){
+    enviarFormulario(){
       
       if( !this.formularioRegistro.invalid) {
 
@@ -63,6 +63,7 @@ export class RegistrarUsuarioComponent implements OnInit {
           telefono :this.formularioRegistro.get('telefonoFormControl')?.value,
         }
 
+
         this.usuarioService.crearUsuario(usuario).subscribe( (res:any) => {
           console.log(res)
           let config:ConfigModal = {
@@ -70,6 +71,7 @@ export class RegistrarUsuarioComponent implements OnInit {
             titulo2: res.msj
           }
           this.open('exito',config )
+          this.router.navigateByUrl('/inicio')
         }, (err:any) => {
           let config:ConfigModal = {
             titulo1: '¡Error!',
@@ -90,6 +92,15 @@ export class RegistrarUsuarioComponent implements OnInit {
     }
     matcher = new MyErrorStateMatcher();
   ngOnInit(): void {
+  }
+  obtenerErrorContrasenia() {
+
+    return this.formularioRegistro.get('contraseniaFormControl')?.hasError('pattern') ? 'La contraseña debe tener un mínimo de 8 caracteres, al menos 1 letra mayúscula, 1 letra minúscula y 1 número' : 'La contraseña es obligatoria'
+
+  }
+  obtenerErrorCorreo() {
+    return this.formularioRegistro.get('emailFormControl')?.hasError('pattern') ? 'El correo ingresado no es válido' : 'El correo es obligatorio'
+
   }
 
   open(tipoModal:string, config:ConfigModal) {
