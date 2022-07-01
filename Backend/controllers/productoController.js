@@ -40,7 +40,7 @@ exports.obtenerProductos = (req,res)=>{
 };
 /*---------Obtener un solo producto----------*/
 exports.obtenerProducto = (req, res) =>{
-    Producto.obtenerUno(id, (error, data) =>{
+    Producto.obtenerUno(req.params, (error, data) =>{
         if(error){
             res.status(404).json({msj: 'Hubo un problema al obtener el producto' + error})
         }else{
