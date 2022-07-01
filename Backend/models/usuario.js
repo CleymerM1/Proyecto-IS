@@ -48,6 +48,14 @@ Usuario.crear = (newObjUsuario, res)=>{
                     return res(null,{msj: 'Se envio un correo con las instrucciones para válidar tu cuenta.'})
                 } catch (error) {
                     console.log(error)
+                    borrarquery=`delete from usuario where correo ='${newObjUsuario.correo}'`;
+                    conexion.query(borrarquery, (errb, resB)=>{
+                        if(errb){
+                            console.log('Ocurrió un error');
+                        }else{
+                            console.log('Se eliminó el usuario');
+                        }
+                    });
                     return res({msj: 'No se pudo enviar el correo al usuario'},null)
                     // Borrar el usuario de la base de datos
                     
@@ -71,7 +79,7 @@ Usuario.validarTokenRegistro = (req, resultado) => {
     let { token } = req.body
     console.log(req.body)
     let consulta = `SELECT * FROM usuario WHERE token = '${token}'`
-    let consultaActualizarToken = `UPDATE usuario SET token = '' WHERE token= '${token}'`;
+    let consultaActualizarToken = `UPDATE usuario SET token = '', confirmado='1' WHERE token= '${token}'`;
     conexion.query(consulta, (err, res) => {
         if (res.length) {
             // Borrar el token del usuario 
@@ -93,7 +101,11 @@ Usuario.iniciarSeion = (resultado)=>{
     let consulta = `SELECT * FROM usuario where correo = '${req.body.correo}' and contrasenia = AES_ENCRYPT('${req.body.contrasenia}','${req.body.contrasenia}')`
     conexion.query(consulta, (err, resUsuario) => {
         if(err) return respuesta(err, null)
-        
+        if(!resUsuario.length) return respuesta({msj: 'Usuario o contraseña no válido'})
+
+        if(resUsuario[0].confirmado == '0'){
+            return respuesta({msj: 'Confirma tu cuenta para poder iniciar sesión'}, null)
+        }
 
         return respuesta(null, resUsuario )
    
