@@ -33,5 +33,6 @@ FOREIGN Key (idProducto) REFERENCES producto(idProducto));
 --ALTER TABLE producto MODIFY foto varchar(250);
 ALTER TABLE usuario MODIFY contrasenia blob;
 ALTER TABLE usuario ADD COLUMN token text;
+ALTER TABLE usuario ADD confirmado ENUM('1','0') DEFAULT '0';
 
 
