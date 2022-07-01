@@ -43,17 +43,17 @@ Producto.obtenerTodos = (resultado)=>{
 };
 
 /*--------Obtener Producto------*/
-Producto.obtenerPorId = (id, resultado) => {
-let obtenerQuery = `select * from producto where idProducto = '${id}`
-    conexion.query(obtenerQuery, (err, res) => {
-        if(err) 
-            return resultado({msj: 'Hubo un error' + err}, null)
-        else if(res.length)
-            return resultado(null, res[0])
-        else
-            return resultado({msj: 'Producto no encontrado'}, null)
-    })
-}
+Producto.obtenerPorId = (id, resultado) => {                           //Importante agregar mas metodos de busqueda o crear funciones aparte                             
+let obtenerQuery = `select * from producto where idProducto = '${id}`  //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                     
+    conexion.query(obtenerQuery, (err, res) => {                       //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                 
+        if(err)                                                        //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                 
+            return resultado({msj: 'Hubo un error' + err}, null)       //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                 
+        else if(res.length)                                            //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                         
+            return resultado(null, res[0])                             //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                         
+        else                                                           //Importante agregar mas metodos de busqueda o crear funciones aparte                                                             
+            return resultado({msj: 'Producto no encontrado'}, null)    //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                 
+    })                                                                 //Importante agregar mas metodos de busqueda o crear funciones aparte                                                     
+}                                                                      //Importante agregar mas metodos de busqueda o crear funciones aparte                                                 
 
 /*-------Actualizar por id------*/
 Producto.actualizarPorId = (id, newObjProducto, resultado) => {
@@ -77,7 +77,8 @@ Producto.eliminarPorId = (id, resultado) => {
     conexion.query(eliminarQuery, (err, res) => {
         if(err)
             return resultado({msj: `Hubo un error '${err}'`}, null)
-/*affectedRows consigue el numero de filas afectadas en un INSERT, UPDATE o DELETE de la base de datos*/
+/*affectedRows consigue el numero de filas afectadas 
+en un INSERT, UPDATE o DELETE de la base de datos*/
         else if(res.affectedRows == 0)
             return resultado({msj: 'No se elimino ningun producto'}, null)
         else
@@ -87,16 +88,16 @@ Producto.eliminarPorId = (id, resultado) => {
 }
 
 /*Eliminar todos los productos(debe cambiarse con respecto al usuario)*/
-Producto.eliminar = (resultado) => {
-    let eliminarQuery = 'DELETE FROM producto'
-    conexion.query(eliminarQuery, (err, res) => {
-        if(err)
-            return resultado({msj: `Hubo un error '${err}'`}, null)
-        else if(res.affectedRows == 0)
-            return resultado({msj: 'No se elimino ningun producto'}, null)
-        else
-            return resultado(null, {msj: `Numero de productos eliminados '${res.affectedRows}'`})
-    })
-}
+Producto.eliminarTodosPorUsuario = (resultado) => {                                               // Importante cambiar
+    let eliminarQuery = 'DELETE FROM producto'                                                    // Importante cambiar        
+    conexion.query(eliminarQuery, (err, res) => {                                                 // Importante cambiar            
+        if(err)                                                                                   // Importante cambiar
+            return resultado({msj: `Hubo un error '${err}'`}, null)                               // Importante cambiar                            
+        else if(res.affectedRows == 0)                                                            // Importante cambiar
+            return resultado({msj: 'No se elimino ningun producto'}, null)                        // Importante cambiar                                                            
+        else                                                                                      // Importante cambiar
+            return resultado(null, {msj: `Numero de productos eliminados '${res.affectedRows}'`}) // Importante cambiar                                                                    
+    })                                                                                            // Importante cambiar    
+}                                                                                                 // Importante cambiar
 
 module.exports = Producto;
