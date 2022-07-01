@@ -5,6 +5,7 @@ import { LandingComponent } from './Components/landing/landing.component';
 import { ListarProductosComponent } from './Components/listar-productos/listar-productos.component';
 import { RegistrarUsuarioComponent } from './Components/registrar-usuario/registrar-usuario.component';
 import { CategoriasComponent } from './Components/categorias/categorias.component';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 
 //IMPORTACIONES DE PRODUCTOS
 import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path:'registrar-usuario',component:RegistrarUsuarioComponent},
   {path:'editar-usuario/:id', component:RegistrarUsuarioComponent},
   {path:'listar-productos', component:ListarProductosComponent},
-  {path:'categorias', component:CategoriasComponent},
+  {path:'categorias', component:CategoriasComponent, canActivate:[AuthGuard]},
 
 //PRODUCTOS 
   {path:'electronica', component:ElectronicaComponent},
