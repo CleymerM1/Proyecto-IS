@@ -39,6 +39,7 @@ import { HombreComponent } from './Components/categorias/hombre/hombre.component
 import { MujerComponent } from './Components/categorias/mujer/mujer.component';
 import { MascotasComponent } from './Components/categorias/mascotas/mascotas.component';
 import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueteria.component';
+import { IniciarSesionComponent } from './Components/iniciar-sesion/iniciar-sesion.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueter
     LandingComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    IniciarSesionComponent
   ],
   imports: [
     BrowserModule,
