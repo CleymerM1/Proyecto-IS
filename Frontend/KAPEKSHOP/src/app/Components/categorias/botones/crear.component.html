@@ -1,0 +1,81 @@
+<div class="container mt-8 mb-8">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-2">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>AGREGANDO PRODUCTOS</h3>
+                </div>
+
+                <form class="row g-3">
+                    <div class="col-md-5">
+                        <label for="inputName" class="p">Nombre:</label>
+                        <input type="name" class="d"  id="inputName">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="inputEstado" class="p">Estado:</label>
+                        <select id="inputEstado"  class="d" >
+                            <option selected>Nuevo</option>
+                            <option selected>Como nuevo</option>
+                            <option selected>Buen Estado</option>
+                            <option selected>Aceptable</option>
+                            <option selected>Selecione una opcion</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="inputCosto" class="p">Costo:</label>
+                        <input type="price" class="d" id="inputCosto">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="p" for="inputDescuento" class="p">Descuento:</label>
+                        <input type="text" class="d" id="inputDescuento">
+                    </div>
+
+                    <div class="col-5">
+                        <label  for="inputDescripcion" class="p">Descripcion:</label>
+                        <input type="text" class="s" id="inputDescripcion">
+                    </div>
+            
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary text-center btn-1"
+                            style="margin-left: auto; margin-right: 10px; margin-top: 2px; margin-bottom: 2px;"
+                            (click)="enviarAInicio(modaDialogoExito)" routerLink="/listar-productos">Aceptar</button>
+                        <button class="btn btn-primary text-center btn-1"
+                            style="margin-left: auto; margin-right: auto;margin-top: 1px; margin-bottom: 1px;" 
+                            routerLink="/landing">Atrás</button>
+                    </div>
+
+                </form>
+
+                <!--Modal dialogo exito-->
+                <ng-template #modaDialogoExito let-modal>
+                    <div class="modal-exito text-center">
+                        <div class="col-12">
+                            <div class="close float-end mx-2 my-2 cursor-pointer" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span class="material-icons">close</span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12">
+                                <span class="material-icons" style="color: white; font-size: 121px;">
+                                    check_circle_outline
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <h3>¡Excelente!</h3>
+                        <h3>Se ha registrado exitosamente</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary text-center btn-1"
+                            style="margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem;"
+                            (click)="enviarAInicio(modal)">OK</button>
+                    </div>
+                </ng-template>
+                <!--Final modal diálogo éxito-->

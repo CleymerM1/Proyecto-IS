@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { RegistrarUsuarioComponent } from './Components/registrar-usuario/registrar-usuario.component';
 import { InicioComponent } from './Components/inicio/inicio.component';
 import { ListarProductosComponent } from './Components/listar-productos/listar-productos.component';
+
 import { CategoriasComponent } from './Components/categorias/categorias.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -40,10 +41,14 @@ import { MujerComponent } from './Components/categorias/mujer/mujer.component';
 import { MascotasComponent } from './Components/categorias/mascotas/mascotas.component';
 import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueteria.component';
 
+//BOTONES
+import { CrearComponent } from './Components/categorias/botones/crear.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     RegistrarUsuarioComponent,
+    CrearComponent,
     InicioComponent,
     ListarProductosComponent,
     CategoriasComponent,

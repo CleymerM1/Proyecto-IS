@@ -20,31 +20,40 @@ import { MujerComponent } from './Components/categorias/mujer/mujer.component';
 import { MascotasComponent } from './Components/categorias/mascotas/mascotas.component';
 import { JugueteriaComponent } from './Components/categorias/jugueteria/jugueteria.component';
 
+
+//BOTONES
+import { CrearComponent } from './Components/categorias/botones/crear.component';
+
 //componentes
 const routes: Routes = [
-  {path: '', component:LandingComponent},
-  {path: 'inicio', component:InicioComponent},
-  {path:'registrar-usuario',component:RegistrarUsuarioComponent},
-  {path:'editar-usuario/:id', component:RegistrarUsuarioComponent},
-  {path:'listar-productos', component:ListarProductosComponent},
-  {path:'categorias', component:CategoriasComponent},
+  { path: '', component: LandingComponent },
+  { path: 'inicio', component: InicioComponent },
+  { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
+  { path: 'editar-usuario/:id', component: RegistrarUsuarioComponent },
+  { path: 'listar-productos', component: ListarProductosComponent },
+  { path: 'listar-productos/:id', component: ListarProductosComponent },
+  { path: 'categorias', component: CategoriasComponent },
 
-//PRODUCTOS 
-  {path:'electronica', component:ElectronicaComponent},
-  {path:'ropaninio', component:RopaNinioComponent},
-  {path:'arte', component:ArteComponent},
-  {path:'electrodomesticos', component:ElectrodomesticosComponent},
-  {path:'muebles', component:MueblesComponent},
-  {path:'bienestar', component:BienestarComponent},
-  {path:'hogar', component:HogarComponent},
-  {path:'joyas', component:JoyasComponent},
-  {path:'hombre', component:HombreComponent},
-  {path:'mujer', component:MujerComponent},
-  {path:'mascotas', component:MascotasComponent},
-  {path:'jugueteria', component:JugueteriaComponent},
-  
+  //BOTONES
+  { path: 'crear', component: CrearComponent },
 
-  {path:'**', redirectTo:'',pathMatch:'full'},
+
+  //PRODUCTOS 
+  { path: 'electronica', component: ElectronicaComponent },
+  { path: 'ropaninio', component: RopaNinioComponent },
+  { path: 'arte', component: ArteComponent },
+  { path: 'electrodomesticos', component: ElectrodomesticosComponent },
+  { path: 'muebles', component: MueblesComponent },
+  { path: 'bienestar', component: BienestarComponent },
+  { path: 'hogar', component: HogarComponent },
+  { path: 'joyas', component: JoyasComponent },
+  { path: 'hombre', component: HombreComponent },
+  { path: 'mujer', component: MujerComponent },
+  { path: 'mascotas', component: MascotasComponent },
+  { path: 'jugueteria', component: JugueteriaComponent },
+
+
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
