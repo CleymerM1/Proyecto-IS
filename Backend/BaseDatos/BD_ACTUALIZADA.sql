@@ -45,3 +45,8 @@ CREATE TABLE puntajeProductos(idUsuario INT, idProducto INT, idPuntaje INT,
 FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),
 FOREIGN KEY(idProducto) REFERENCES producto(idProducto),
 FOREIGN KEY(idPuntaje) REFERENCES puntaje(idPuntaje));
+
+-------Tabla para usaurios y categorias a las que se suscriben-------------
+CREATE TABLE usuarioCategoria(idUsuario INT, idCategoria INT, 
+FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria));
