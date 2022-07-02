@@ -1,4 +1,3 @@
-const conexion = require('../config/conexion');
 const Producto = require('../models/producto');
 
 /*---------------Crear Producto---------------*/
@@ -44,7 +43,7 @@ exports.obtenerProductos = (req,res)=>{
 exports.obtenerProducto = (req, res) =>{
     let id = req.params.id
     if(!id)
-    return res.status(400-499).send({msj: 'Error del cliente'})
+        return res.status(400-499).send({msj: 'Error del cliente'})
     else
         Producto.obtenerPorId(id, (err, data) => {
             if(err)

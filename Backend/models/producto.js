@@ -23,8 +23,8 @@ Producto.crear = (newObjProducto, resultado)=>{
             let idcat = Object.values(JSON.parse(JSON.stringify(resIdcategoria[0])))
             //console.log(idcat)
             let insertQuery =   `insert into producto (idCategoria, nombre, costo, estado, descripcion, descuento) 
-                        VALUES ('${idcat}', '${newObjProducto.nombre}', '${newObjProducto.costo}',
-                        '${newObjProducto.estado}','${newObjProducto.descripcion}','${newObjProducto.descuento}')`;
+                        VALUES (${idcat}, '${newObjProducto.nombre}', ${newObjProducto.costo},
+                        '${newObjProducto.estado}','${newObjProducto.descripcion}',${newObjProducto.descuento})`;
             conexion.query(insertQuery,(err, resRegistrarProducto)=>{
                 if (err) return resultado({msj: 'El producto no pudo ser registrado'+err}, null)
         
@@ -38,13 +38,13 @@ Producto.crear = (newObjProducto, resultado)=>{
 Producto.obtenerTodos = (resultado)=>{
     conexion.query("select * from producto", (err, res)=>{
         if(err) throw err;
-        resultado(null, res);
+        return resultado(null, res);
     });
 };
 
 /*--------Obtener Producto------*/
 Producto.obtenerPorId = (id, resultado) => {                           //Importante agregar mas metodos de busqueda o crear funciones aparte                             
-let obtenerQuery = `select * from producto where idProducto = '${id}`  //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                     
+let obtenerQuery = `select * from producto where idProducto = ${id}`   //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                     
     conexion.query(obtenerQuery, (err, res) => {                       //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                 
         if(err)                                                        //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                 
             return resultado({msj: 'Hubo un error' + err}, null)       //Importante agregar mas metodos de busqueda o crear funciones aparte                                                                                                                 
@@ -64,7 +64,7 @@ Producto.actualizarPorId = (id, newObjProducto, resultado) => {
         if(err)
             return resultado({msj: `Hubo un error '${err}'`}, null)
 /*changedRows consigue el numero de filas que hayan sido cambiadas en sus valores en un UPDATE de la base de datos*/
-            else if(res.changedRows == 0)
+        else if(res.changedRows == 0)
             return resultado({msj: 'No hubo cambios'}, null)
         else
             return resultado(null, {msj: 'Producto actualizado'})

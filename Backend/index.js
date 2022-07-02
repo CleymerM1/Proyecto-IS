@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const dotenv=require('dotenv');
 dotenv.config();
-const conexion = require('./config/conexion');
 const cors = require('cors')
 
 // Configurar CORS
@@ -27,6 +26,8 @@ app.use(express.json());
 app.use('/usuario', require('./routes/usuario'))
 //Producto
 app.use('/producto', require('./routes/producto'))
+//Categoria
+app.use('/categoria', require('./routes/categoria'))
 
 
 const port= (process.env.port || 3000);
