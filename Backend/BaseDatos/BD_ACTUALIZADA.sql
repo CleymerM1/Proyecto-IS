@@ -24,7 +24,7 @@ departamento VARCHAR(50), contrasenia VARCHAR(50), estado VARCHAR(50), telefono 
 primary key (idUsuario, idRol),
 FOREIGN KEY (idRol) REFERENCES rol(idRol));
 
--------------------------------------Nuevo 27/06/2022--------------------------------------------------------
+-------------------------------------27/06/2022--------------------------------------------------------
 CREATE TABLE puntaje(idPuntaje INT auto_increment, idUsuario INT, idProducto INT, puntaje FLOAT, comentario varchar(500) default null
 PRIMARY KEY (idPuntaje),
 FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
@@ -33,5 +33,20 @@ FOREIGN Key (idProducto) REFERENCES producto(idProducto));
 --ALTER TABLE producto MODIFY foto varchar(250);
 ALTER TABLE usuario MODIFY contrasenia blob;
 ALTER TABLE usuario ADD COLUMN token text;
+ALTER TABLE usuario ADD confirmado ENUM('1','0') DEFAULT '0';
 
+----------------------------------------Nuevo 1/7/2022--------------------------------------------
+--------TABLA de Usuario y Productos----------
+CREATE TABLE usuarioProducto(idUsuario INT, idProducto INT, tipoLista VARCHAR(50),
+FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN KEY(idProducto) REFERENCES producto(idProducto));
+--------Tabla para los puntajes de los productos------------
+CREATE TABLE puntajeProductos(idUsuario INT, idProducto INT, idPuntaje INT,
+FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN KEY(idProducto) REFERENCES producto(idProducto),
+FOREIGN KEY(idPuntaje) REFERENCES puntaje(idPuntaje));
 
+-------Tabla para usaurios y categorias a las que se suscriben-------------
+CREATE TABLE usuarioCategoria(idUsuario INT, idCategoria INT, 
+FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria));
