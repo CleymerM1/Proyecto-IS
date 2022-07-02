@@ -1,14 +1,14 @@
 /*--------------------------------------IMPORTS----------------------------------*/
 const express = require('express');
 const router = express.Router();
-const productoController = require('../controllers/categoriaController');
+const categoriaController = require('../controllers/categoriaController');
 
 /*---------------------------------------CRUD------------------------------------*/
-/*router.post('/registro', productoController.crearProducto);
-router.get('/', productoController.obtenerProductos);
-router.get('/:id', productoController.obtenerProducto);
-router.put('/:id', productoController.actualizarProducto);
-router.delete('/:id', productoController.eliminarProducto);*/
+router.post('/registro', categoriaController.crearCategoria);
+router.get('/', categoriaController.obtenerCategorias);
+router.get('/:id', categoriaController.obtenerCategoria);
+router.put('/:id', categoriaController.actualizarCategoria);
+router.delete('/:id', categoriaController.eliminarCategoria);
 
 /*-------------------------------------------------------------------------------*/
 module.exports = router;
