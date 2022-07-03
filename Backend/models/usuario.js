@@ -100,14 +100,14 @@ Usuario.validarTokenRegistro = (req, resultado) => {
 Usuario.iniciarSeion = (resultado)=>{
     let consulta = `SELECT * FROM usuario where correo = '${req.body.correo}' and contrasenia = AES_ENCRYPT('${req.body.contrasenia}','${req.body.contrasenia}')`
     conexion.query(consulta, (err, resUsuario) => {
-        if(err) return respuesta(err, null)
-        if(!resUsuario.length) return respuesta({msj: 'Usuario o contraseña no válido'})
+        if(err) return resultado(err, null)
+        if(!resUsuario.length) return resultado({msj: 'Usuario o contraseña no válido'})
 
         if(resUsuario[0].confirmado == '0'){
-            return respuesta({msj: 'Confirma tu cuenta para poder iniciar sesión'}, null)
+            return resultado({msj: 'Confirma tu cuenta para poder iniciar sesión'}, null)
         }
 
-        return respuesta(null, resUsuario )
+        return resultado(null, resUsuario )
    
     } )
 };
@@ -125,7 +125,26 @@ Usuario.obtenerPorCorreo = ( req, respuesta ) => {
     })
 };
 
+/*-----Metodo para suscribirse a una categoria-----*/
+Usuario.suscribirCategoria = (idU, idC, resultado) => {
+    let resgistrarQuery = `INSERT INTO usuarioCategoria VALUES (${idU}, ${idC})`
+    conexion.query(resgistrarQuery, (err, res) => {
+        if(err)
+            return resultado(err, null)
+        else
+            return resultado(null, res)
+    })
+}
 
-
+/*-----Metodo para desuscribirse de una categoria-----*/
+Usuario.desuscribirCategoria = (idU, idC, resultado) => {
+    let resgistrarQuery = `DELETE FROM usuarioCategoria WHERE idUsuario = ${idU} AND idCategoria = ${idC}`
+    conexion.query(resgistrarQuery, (err, res) => {
+        if(err)
+            return resultado(err, null)
+        else
+            return resultado(null, res)
+    })
+}
 
 module.exports = Usuario;

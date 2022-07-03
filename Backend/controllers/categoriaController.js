@@ -36,11 +36,11 @@ exports.obtenerCategorias = (req, res) => {
 
 /*-----Obtener una sola categoria----*/
 exports.obtenerCategoria = (req, res) => {
-    let id = req.params.id
-    if(!id)
+    let idC = req.params.idC
+    if(!idC)
         return res.status(400-499).send({msj: 'Error del cliente'})
     else
-        Categoria.obtenerPorId(id, (err, data) => {
+        Categoria.obtenerPorId(idC, (err, data) => {
             if(err)
                 return res.status(500-599).send({msj: err.msj || 'Error al buscar en la base d datos'})
             else
@@ -50,11 +50,11 @@ exports.obtenerCategoria = (req, res) => {
 
 /*---------Actualizar por id---------*/
 exports.actualizarCategoria = (req, res) => {
-    let id = req.params.id
-    if(!id)
+    let idC = req.params.idC
+    if(!idC)
         return res.status(400-499).send({msj: 'Error del cliente'})
     else
-        Categoria.actualizarPorId(id, (err, data) => {
+        Categoria.actualizarPorId(idC, (err, data) => {
             if(err)
                 return res.status(500-599).send({msj: err.msj || 'Error al buscar en la base d datos'})
             else
@@ -64,14 +64,24 @@ exports.actualizarCategoria = (req, res) => {
 
 /*----------Eliminar por id----------*/
 exports.eliminarCategoria = (req, res) => {
-    let id = req.params.id
-        if(!id)
+    let idC = req.params.idC
+        if(!idC)
             return res.status(400-499).send({msj: 'Error del cliente'})
         else
-            Producto.eliminarPorId(id, (err, data) => {
+            Producto.eliminarPorId(idC, (err, data) => {
                 if(err)
                     return res.status(500-599).send({msj: `Error al eliminar la categoria con el id = '${id}', ${err}`})
                 else
                     res.send(data)
             })
+}
+
+/*---Eliminar todas las categorias---*/
+exports.eliminarCategorias = (req, res) => {
+    Categoria.eliminarTodosPorUsuario((err, data) => {
+        if(err)
+            return res.status(500-599).send({msj: `Error al eliminar las categorias, ${err}`})
+        else
+            res.send(data)
+    })
 }

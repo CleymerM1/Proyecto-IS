@@ -95,3 +95,34 @@ exports.inicioSesion = (req, res) => {
 };
 
 
+/*Metodo para suscribirse a una categoria*/
+exports.suscribirCategoria = (req, res) => {
+/*idU y idC: llaves primarias de usuario y categoria respectivamente*/
+    let idU = req.params.idU
+    let idC = req.params.idC
+    if(idU && idC)
+        Usuario.suscribirCategoria(idU, idC, (err, data) => {
+            if(err)
+                return res.status(500-599).send({msj: err.msj || 'Error al suscribirse en la base d datos'})
+            else
+                return res.send(data)
+        })
+    else
+        res.status(400).send({msj: 'Error del cliente'})
+}
+
+/*Metodo para suscribirse a una categoria*/
+exports.desuscribirCategoria = (req, res) => {
+    /*idU y idC: llaves primarias de usuario y categoria respectivamente*/
+        let idU = req.params.idU
+        let idC = req.params.idC
+        if(idU && idC)
+            Usuario.desuscribirCategoria(idU, idC, (err, data) => {
+                if(err)
+                    return res.status(500-599).send({msj: err.msj || 'Error al desuscribirse en la base d datos'})
+                else
+                    return res.send(data)
+            })
+        else
+            res.status(400).send({msj: 'Error del cliente'})
+}

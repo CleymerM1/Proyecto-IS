@@ -1,12 +1,14 @@
 
 const express = require('express');
-const conexion = require('../config/conexion');
 const router = express.Router();
 const usuarioController = require('../controllers/usuarioController');
 
-
+/*------------------------------CRUD------------------------------*/
 router.post('/registro', usuarioController.crearUsuario);
+router.post('/:idU/:idC', usuarioController.suscribirCategoria);
 router.get('/', usuarioController.obtenerUsuario);
+router.delete('/:idU/:idC', usuarioController.desuscribirCategoria)
+/*----------------------------------------------------------------*/
 
 
 

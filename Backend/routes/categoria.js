@@ -6,9 +6,10 @@ const categoriaController = require('../controllers/categoriaController');
 /*---------------------------------------CRUD------------------------------------*/
 router.post('/registro', categoriaController.crearCategoria);
 router.get('/', categoriaController.obtenerCategorias);
-router.get('/:id', categoriaController.obtenerCategoria);
-router.put('/:id', categoriaController.actualizarCategoria);
-router.delete('/:id', categoriaController.eliminarCategoria);
+router.get('/:idC', categoriaController.obtenerCategoria);
+router.put('/:idC', categoriaController.actualizarCategoria);
+router.delete('/:idC', categoriaController.eliminarCategoria);
+router.delete('/', categoriaController.eliminarCategorias);
 
 /*-------------------------------------------------------------------------------*/
 module.exports = router;
