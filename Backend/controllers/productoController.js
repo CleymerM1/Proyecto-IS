@@ -2,6 +2,9 @@ const Producto = require('../models/producto');
 
 /*---------------Crear Producto---------------*/
 exports.crearProducto = (req,res)=>{
+    if(!req.body){
+        return res.status(400).send({msj: 'Error del cliente'})
+    }
     console.log(req.body);
     const producto = new Producto({
         categoria: req.body.categoria,

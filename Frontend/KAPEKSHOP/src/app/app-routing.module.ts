@@ -7,6 +7,7 @@ import { RegistrarUsuarioComponent } from './Components/registrar-usuario/regist
 import { CategoriasComponent } from './Components/categorias/categorias.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 
+
 //IMPORTACIONES DE PRODUCTOS
 import { ElectronicaComponent } from './Components/categorias/electronica/electronica.component';
 import { RopaNinioComponent } from './Components/categorias/ropaninio/ropaninio.component';
@@ -27,21 +28,19 @@ import { CrearComponent } from './Components/categorias/botones/crear.component'
 
 //componentes
 const routes: Routes = [
-<<<<<<< HEAD
   { path: '', component: LandingComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
   { path: 'editar-usuario/:id', component: RegistrarUsuarioComponent },
   { path: 'listar-productos', component: ListarProductosComponent },
   { path: 'categorias', component: CategoriasComponent },
-=======
+
   {path: '', component:LandingComponent},
   {path: 'inicio', component:InicioComponent},
   {path:'registrar-usuario',component:RegistrarUsuarioComponent},
   {path:'editar-usuario/:id', component:RegistrarUsuarioComponent},
   {path:'listar-productos', component:ListarProductosComponent},
   {path:'categorias', component:CategoriasComponent, canActivate:[AuthGuard]},
->>>>>>> cef9bc7e99a01041a696352e86d4ede7a91cda3d
 
   //BOTONES
   { path: 'crear', component: CrearComponent },

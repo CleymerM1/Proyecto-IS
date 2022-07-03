@@ -5,7 +5,7 @@ let transport = nodemailer.createTransport({
     port: process.env.PORT_EMAIL,
     auth: {
         user: process.env.USER_EMAIL,
-        pass: process.env.PASSWORD_EMAIL,
+        pass: process.env.PASS_EMAIL,
     }
 })
 
@@ -15,7 +15,7 @@ console.log({
     secure: true,
     auth: {
         user: process.env.USER_EMAIL,
-        pass: process.env.PASSWORD_EMAIL,
+        pass: process.env.PASS_EMAIL,
     }
 })
 

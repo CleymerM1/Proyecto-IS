@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductosService {
-  url = 'http://localhost:3000/producto/crear/';
-
+  url = 'http://localhost:3000/producto';
+  res = '';
   constructor(private http: HttpClient) { }
 
   crearProducto(objProducto: any): Observable<any> {
-    let urlStr = 'http://localhost:3000/producto/crear/'
+    let urlStr = this.url + '/registro'
     return this.http.post(urlStr, objProducto)
   }
 

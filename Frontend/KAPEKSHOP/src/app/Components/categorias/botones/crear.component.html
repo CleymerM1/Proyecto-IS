@@ -9,39 +9,39 @@
                 <form class="row g-3">
                     <div class="col-md-5">
                         <label for="inputName" class="p">Nombre:</label>
-                        <input type="name" class="d"  id="inputName">
+                        <input type="name" class="d" formControlName="nombreFormControl" requiredid="inputName">
                     </div>
                     <div class="col-md-5">
                         <label for="inputEstado" class="p">Estado:</label>
-                        <select id="inputEstado"  class="d" >
-                            <option selected>Nuevo</option>
-                            <option selected>Como nuevo</option>
-                            <option selected>Buen Estado</option>
-                            <option selected>Aceptable</option>
-                            <option selected>Selecione una opcion</option>
+                        <select id="inputEstado" class="d">
+                            <option value="">-Seleccione una opción-</option>
+                            <option value="">Nuevo</option>
+                            <option value="">Como nuevo</option>
+                            <option value="">Buen Estado</option>
+                            <option value="">Aceptable</option>
                         </select>
                     </div>
                     <div class="col-md-5">
                         <label for="inputCosto" class="p">Costo:</label>
-                        <input type="price" class="d" id="inputCosto">
+                        <input type="price" formControlName="costoFormControl" required class="d" id="inputCosto">
                     </div>
                     <div class="col-md-6">
                         <label class="p" for="inputDescuento" class="p">Descuento:</label>
-                        <input type="text" class="d" id="inputDescuento">
+                        <input type="text" formControlName="descuentoFormControl" required class="d"
+                            id="inputDescuento">
                     </div>
 
                     <div class="col-5">
-                        <label  for="inputDescripcion" class="p">Descripcion:</label>
-                        <input type="text" class="s" id="inputDescripcion">
+                        <label for="inputDescripcion" class="p">Descripcion:</label>
+                        <input type="text" class="s" formControlName="descripcionFormControl" required
+                            id="inputDescripcion">
                     </div>
-            
-
                     <div class="modal-footer">
                         <button class="btn btn-primary text-center btn-1"
                             style="margin-left: auto; margin-right: 10px; margin-top: 2px; margin-bottom: 2px;"
-                            (click)="enviarAInicio(modaDialogoExito)" routerLink="/listar-productos">Aceptar</button>
+                            (click)="crearProducto()">Aceptar</button>
                         <button class="btn btn-primary text-center btn-1"
-                            style="margin-left: auto; margin-right: auto;margin-top: 1px; margin-bottom: 1px;" 
+                            style="margin-left: auto; margin-right: auto;margin-top: 1px; margin-bottom: 1px;"
                             routerLink="/landing">Atrás</button>
                     </div>
 

@@ -27,6 +27,22 @@ export class CrearComponent implements OnInit {
 
   constructor( private modalService: NgbModal, private router: Router, private productosService:ProductosService ) { 
   }
+
+  crearProducto = () => {
+    console.log('metodo crear producto')
+    const values = {
+      'nombre': 'Producto de Prueba',
+      'precio': '999999999',
+      'estado': 'Nuevo',
+      'descuento': '0',
+      'descripcion': 'Nuevas en caja'
+    }
+
+    this.productosService.crearProducto(values)
+    .subscribe( result => {console.log('respuesta de metodo crear producto', result)})
+
+  }
+
   abrirModal( modal:any ){
 
     this.modalService.open(
@@ -40,13 +56,10 @@ export class CrearComponent implements OnInit {
     }
     formularioCrear = new FormGroup( {
       nombreFormControl: new FormControl("", [Validators.required]),
-      apellidoCompletoFormControl: new FormControl("", [Validators.required]),
-      emailFormControl : new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      contraseniaFormControl: new FormControl('',[Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]),
-      telefonoFormControl: new FormControl('',[Validators.required, Validators.pattern("^((\\+504-?)|0)?[0-9]{8}$")]),
-      direccionFormControl: new FormControl('',[Validators.required]),
-      departamentoFormControl: new FormControl("", [Validators.required]),
-      terminosFormControl: new FormControl(this.checked, [Validators.required,  Validators.requiredTrue]),
+      costoFormControl: new FormControl("", [Validators.required]),
+      estadoFormControl : new FormControl('', [Validators.required]),
+      descuentoFormControl: new FormControl('',[Validators.required]),
+      descripcionFormControl: new FormControl('',[Validators.required]),
       
     })
     enviarFormulario(modal:any){
@@ -54,14 +67,11 @@ export class CrearComponent implements OnInit {
       if( !this.formularioCrear.invalid) {
 
         let usuario = {
-          nombre: this.formularioCrear.get('nombreCompletoFormControl')?.value,
-          apellido:this.formularioCrear.get('apellidoCompletoFormControl')?.value,
-          correo:this.formularioCrear.get('emailFormControl')?.value,
-          direccion:this.formularioCrear.get('direccionFormControl')?.value,
-          departamento:this.formularioCrear.get('departamentoFormControl')?.value,
-          contrasenia: this.formularioCrear.get('contraseniaFormControl')?.value,
-          estado: null,
-          telefono :this.formularioCrear.get('telefonoFormControl')?.value,
+          nombre: this.formularioCrear.get('nombreFormControl')?.value,
+          costo:this.formularioCrear.get('costoFormControl')?.value,
+          estado:this.formularioCrear.get('estadoFormControl')?.value,
+          descuento:this.formularioCrear.get('descuentoFormControl')?.value,
+          descripcion:this.formularioCrear.get('descripcionFormControl')?.value,
         }
 
         this.productosService.crearProducto(Producto).subscribe( (res:any) => {
